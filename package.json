@@ -15,9 +15,11 @@
     "prepublishOnly": "run-s test build"
   },
   "keywords": [
-    "nest.js",
+    "nest",
+    "nestjs",
     "typescript",
     "util",
+    "utils",
     "library"
   ],
   "author": "Beeno Tung",
