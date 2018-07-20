@@ -5,6 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "clean": "rm -rf dist",
+    "prebuild": "run-s clean",
     "build": "tsc",
     "lint": "tslint -p .",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -23,7 +25,7 @@
     "prettier": "^1.13.7",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.3.1",
-    "typescript": "^2.9.2"
+    "typescript": "^2.3.4"
   },
   "repository": {
     "type": "git",
