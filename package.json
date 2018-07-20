@@ -14,7 +14,12 @@
     "test": "run-s build lint",
     "prepublishOnly": "run-s test build"
   },
-  "keywords": [],
+  "keywords": [
+    "nest.js",
+    "typescript",
+    "util",
+    "library"
+  ],
   "author": "Beeno Tung",
   "license": "BSD-2-Clause",
   "dependencies": {
