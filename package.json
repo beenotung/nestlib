@@ -1,0 +1,36 @@
+{
+  "name": "nestlib",
+  "version": "0.0.0",
+  "description": "nest.js application helper library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -p .",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "postformat": "tslint -p . --fix",
+    "test": "run-s build lint",
+    "prepublishOnly": "run-s test build"
+  },
+  "keywords": [],
+  "author": "Beeno Tung",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "@nestjs/common": "^5.1.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3",
+    "prettier": "^1.13.7",
+    "tslint": "^5.11.0",
+    "tslint-eslint-rules": "^5.3.1",
+    "typescript": "^2.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beenotung/nestlib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beenotung/nestlib/issues"
+  },
+  "homepage": "https://github.com/beenotung/nestlib#readme"
+}
