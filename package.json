@@ -4,10 +4,12 @@
   "description": "nest.js application helper library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": "dist",
   "scripts": {
     "clean": "rm -rf dist",
-    "prebuild": "run-s clean",
+    "prebuild": "run-s clean && ./gen-index",
     "build": "tsc",
+    "postbuild": "./rm-index",
     "lint": "tslint -p .",
     "format": "prettier --write \"src/**/*.ts\"",
     "postformat": "tslint -p . --fix",
