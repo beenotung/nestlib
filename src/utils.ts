@@ -8,6 +8,6 @@ export function not_impl (res?: Response): Response | any {
   throw new Error('not_impl');
 }
 
-export function ok (res: Response, data: object): Response {
+export function ok (res: Response, data: any): Response {
   return res.status(HttpStatus.OK).json(data);
 }
