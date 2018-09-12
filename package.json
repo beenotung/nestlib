@@ -30,11 +30,15 @@
     "@nestjs/common": "^5.1.0"
   },
   "devDependencies": {
+    "express-serve-static-core": "^0.1.1",
     "npm-run-all": "^4.1.3",
     "prettier": "^1.13.7",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.3.1",
     "typescript": "^2.3.4"
+  },
+  "peerDependencies": {
+    "express-serve-static-core": "^0.1.1"
   },
   "repository": {
     "type": "git",
