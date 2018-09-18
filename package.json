@@ -4,7 +4,6 @@
   "description": "nest.js application helper library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": "dist",
   "scripts": {
     "clean": "rm -rf dist",
     "prebuild": "run-s clean && ./gen-index",
