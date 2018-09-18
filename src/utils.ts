@@ -11,3 +11,33 @@ export function not_impl (res?: Response): Response | any {
 export function ok (res: Response, data: any): Response {
   return res.status(HttpStatus.OK).json(data);
 }
+
+export function rest_return<A> (
+  res: Response,
+  p: Promise<A>,
+  override?: A,
+): Promise<A> {
+  const n = arguments.length;
+  return p
+    .then((x) => {
+      if (n === 3) {
+        x = override;
+      }
+      if (x === undefined) {
+        x = '' as any;
+      }
+      res.status(HttpStatus.OK).json(x);
+      return x;
+    })
+    .catch((e) => {
+      if (rest_return.log_error) {
+        console.error(e);
+      }
+      res.status(HttpStatus.BAD_REQUEST).json(e);
+      return Promise.reject(e);
+    });
+}
+
+export namespace rest_return {
+  export let log_error = true;
+}
