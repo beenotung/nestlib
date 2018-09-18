@@ -5,3 +5,4 @@ yarn-error.log
 yarn.lock
 gen-index
 rm-index
+.idea/
