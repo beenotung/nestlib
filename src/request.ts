@@ -41,3 +41,34 @@ export function rest_return<A> (
 export namespace rest_return {
   export let log_error = true;
 }
+
+export function html_return<A> (
+  res: Response,
+  p: Promise<A>,
+  override?: A,
+): Promise<A> {
+  const n = arguments.length;
+  return p
+    .then((x) => {
+      res.status(HttpStatus.OK).setHeader('content-type', 'text/html');
+      if (n === 3) {
+        x = override;
+      }
+      if (x === undefined) {
+        x = '' as any;
+      }
+      res.end(x);
+      return x;
+    })
+    .catch((e) => {
+      if (html_return.log_error) {
+        console.error(e);
+      }
+      res.status(HttpStatus.BAD_REQUEST).json(e);
+      return Promise.reject(e);
+    });
+}
+
+export namespace html_return {
+  export let log_error = true;
+}
