@@ -1,11 +1,11 @@
-import { HttpStatus } from '@nestjs/common';
+import { HttpException, HttpStatus } from '@nestjs/common';
 import { Response } from 'express-serve-static-core';
 
 export function not_impl (res?: Response): Response | any {
   if (res) {
     return res.status(HttpStatus.NOT_IMPLEMENTED).json('not_impl');
   }
-  throw new Error('not_impl');
+  throw new HttpException('not_impl', HttpStatus.NOT_IMPLEMENTED);
 }
 
 export function ok (res: Response, data: any): Response {
