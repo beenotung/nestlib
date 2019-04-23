@@ -1,6 +1,6 @@
 {
   "name": "nestlib",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "nest.js application helper library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
