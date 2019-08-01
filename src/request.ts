@@ -21,7 +21,7 @@ export function rest_return<A>(
   return p
     .then(x => {
       if (n === 3) {
-        x = override;
+        x = override as A;
       }
       if (x === undefined) {
         x = '' as any;
@@ -52,7 +52,7 @@ export function html_return<A>(
     .then(x => {
       res.status(HttpStatus.OK).setHeader('content-type', 'text/html');
       if (n === 3) {
-        x = override;
+        x = override as A;
       }
       if (x === undefined) {
         x = '' as any;
