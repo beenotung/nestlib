@@ -6,7 +6,7 @@ export interface AppOptions {
   cors?: boolean;
 }
 
-export async function startApp (
+export async function startApp(
   app: INestApplication & INestExpressApplication,
   options: AppOptions,
 ) {
@@ -15,8 +15,8 @@ export async function startApp (
   }
   await app.listen(options.port);
   const is = os.networkInterfaces();
-  Object.keys(is).forEach((i) => {
-    is[i].forEach((x) =>
+  Object.keys(is).forEach(i => {
+    is[i].forEach(x =>
       console.log(`listening on http://${x.address}:${options.port}`),
     );
   });

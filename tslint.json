@@ -1,24 +1,21 @@
 {
   "extends": [
-    "tslint:recommended"
-  ],
-  "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
+    "tslint:recommended",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
   ],
   "rules": {
     "no-reference": true,
     "only-arrow-functions": false,
-    "max-classes-per-file": [
-      true
-    ],
+    "max-classes-per-file": false,
     "no-namespace": false,
     "align": [
       true,
       "statements"
     ],
-    "arrow-parens": true,
+    "arrow-parens": false,
     "jsdoc-format": false,
-    "space-before-function-paren": true,
+    "space-before-function-paren": false,
     "no-invalid-this": true,
     "callable-types": true,
     "class-name": true,
@@ -79,6 +76,7 @@
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unused-expression": [
+      true,
       "allow-fast-null-checks"
     ],
     "no-use-before-declare": true,
@@ -129,7 +127,14 @@
     "trailing-comma": [
       true,
       {
-        "multiline": "always",
+        "multiline": {
+          "arrays": "always",
+          "exports": "always",
+          "functions": "ignore",
+          "imports": "always",
+          "objects": "always",
+          "typeLiterals": "always"
+        },
         "singleline": "never"
       }
     ]
