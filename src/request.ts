@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { Response } from 'express-serve-static-core';
+import { Request, Response } from 'express-serve-static-core';
 
 export function not_impl (res?: Response): Response | any {
   if (res) {
@@ -71,4 +71,25 @@ export function html_return<A> (
 
 export namespace html_return {
   export let log_error = true;
+}
+
+export function getTokenFromHeader (
+  req: Request,
+  cookieName = 'token',
+): string | undefined {
+  let token = req.header('Authorization');
+  if (token) {
+    token = token.replace(/^Bearer /, '');
+  } else {
+    token = req.header('cookie');
+    if (token) {
+      token.split(';').forEach((s) => {
+        const [key, value] = s.split('=');
+        if (key === cookieName) {
+          token = value;
+        }
+      });
+    }
+  }
+  return token;
 }
