@@ -12,9 +12,19 @@ export function ok(res: Response, data: any): Response {
   return res.status(HttpStatus.OK).json(data);
 }
 
-export function badRequest(res: Response, e: any): Response {
+export function bad_request(res: Response, e: any): Response {
+  if (bad_request.log_error) {
+    console.error(e);
+  }
   return res.status(HttpStatus.BAD_REQUEST).json(e);
 }
+
+export namespace bad_request {
+  export let log_error = true;
+}
+
+/** @alias bad_request */
+export let badRequest = bad_request;
 
 export function rest_return<A>(
   res: Response,
@@ -34,15 +44,13 @@ export function rest_return<A>(
       return x;
     })
     .catch(e => {
-      if (rest_return.log_error) {
-        console.error(e);
-      }
-      badRequest(res, e);
+      bad_request(res, e);
       return Promise.reject(e);
     });
 }
 
 export namespace rest_return {
+  /** @deprecated moved to bad_request.log_error */
   export let log_error = true;
 }
 
@@ -65,15 +73,13 @@ export function html_return<A>(
       return x;
     })
     .catch(e => {
-      if (html_return.log_error) {
-        console.error(e);
-      }
-      badRequest(res, e);
+      bad_request(res, e);
       return Promise.reject(e);
     });
 }
 
 export namespace html_return {
+  /** @deprecated moved to bad_request.log_error */
   export let log_error = true;
 }
 
