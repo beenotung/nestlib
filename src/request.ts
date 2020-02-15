@@ -12,6 +12,10 @@ export function ok(res: Response, data: any): Response {
   return res.status(HttpStatus.OK).json(data);
 }
 
+export function badRequest(res: Response, e: any): Response {
+  return res.status(HttpStatus.BAD_REQUEST).json(e);
+}
+
 export function rest_return<A>(
   res: Response,
   p: Promise<A>,
@@ -26,14 +30,14 @@ export function rest_return<A>(
       if (x === undefined) {
         x = '' as any;
       }
-      res.status(HttpStatus.OK).json(x);
+      ok(res, x);
       return x;
     })
     .catch(e => {
       if (rest_return.log_error) {
         console.error(e);
       }
-      res.status(HttpStatus.BAD_REQUEST).json(e);
+      badRequest(res, e);
       return Promise.reject(e);
     });
 }
@@ -64,7 +68,7 @@ export function html_return<A>(
       if (html_return.log_error) {
         console.error(e);
       }
-      res.status(HttpStatus.BAD_REQUEST).json(e);
+      badRequest(res, e);
       return Promise.reject(e);
     });
 }
