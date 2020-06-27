@@ -1,4 +1,4 @@
-import { INestApplication, INestExpressApplication } from '@nestjs/common';
+import { INestApplication } from '@nestjs/common';
 import os = require('os');
 
 export interface AppOptions {
@@ -6,10 +6,7 @@ export interface AppOptions {
   cors?: boolean;
 }
 
-export async function startApp(
-  app: INestApplication & INestExpressApplication,
-  options: AppOptions,
-) {
+export async function startApp(app: INestApplication, options: AppOptions) {
   if (options.cors) {
     app.enableCors();
   }
