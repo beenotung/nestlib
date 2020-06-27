@@ -3,6 +3,10 @@ tsconfig.json
 tslint.json
 yarn-error.log
 yarn.lock
+pnpm-lock.yaml
 gen-index
 rm-index
 .idea/
+.editorconfig
+.prettierrc
+*.tgz
