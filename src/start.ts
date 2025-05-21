@@ -1,5 +1,5 @@
 import { INestApplication } from '@nestjs/common';
-import os = require('os');
+import os from 'os';
 
 export interface AppOptions {
   port: number;
@@ -13,7 +13,7 @@ export async function startApp(app: INestApplication, options: AppOptions) {
   await app.listen(options.port);
   const is = os.networkInterfaces();
   Object.keys(is).forEach(i => {
-    is[i].forEach(x =>
+    is[i]?.forEach(x =>
       console.log(`listening on http://${x.address}:${options.port}`),
     );
   });
