@@ -10,3 +10,5 @@ rm-index
 .editorconfig
 .prettierrc
 *.tgz
+.pnpmfile.cjs
+src/
